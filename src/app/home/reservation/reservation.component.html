@@ -1,0 +1,166 @@
+<section
+  id="gtco-reservation"
+  class="bg-fixed bg-white section-padding overlay"
+  style="background-image: url(../../../assets/img/reservation-bg.jpg)"
+  data-stellar-background-ratio="0.8"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 col-md-8 col-12 col-sm-10">
+        <div class="section-content bg-white p-5 shadow">
+          <div class="heading-section text-center">
+            <span class="subheading"> Reservation </span>
+            <h2>Book Now</h2>
+          </div>
+
+          <form
+            name="contact-us"
+            [formGroup]="book"
+            #reservation="ngForm"
+            (ngSubmit)="onSubmit(reservation)"
+          >
+            <div class="row">
+              <div class="col-md-12 form-group">
+                <div
+                  class="input-group date"
+                  id="datetimepicker4"
+                  data-target-input="nearest"
+                >
+                  <input
+                    type="date"
+                    class="form-control datetimepicker-input"
+                    formControlName="date"
+                    [ngClass]="{
+                      invalid:
+                        book.get('date')!.invalid && book.get('date')!.touched
+                    }"
+                  />
+                </div>
+                <div
+                  *ngIf="
+                    current + 7 < book.get('date')!.value < current &&
+                    book.get('date')!.touched &&
+                    book.get('date')!.valid
+                  "
+                >
+                  <span style="color: red">*Please Enter a valid date </span>
+                </div>
+                <div
+                  *ngIf="book.get('date')!.invalid && book.get('date')!.touched && book.get('date')!.errors?.['required'] "
+                >
+                  <span style="color: red">*This field is required </span>
+                </div>
+              </div>
+
+              <div class="col-md-6 form-group">
+                <label for="end">Time In</label>
+
+                <div
+                  class="input-group date"
+                  id="datetimepicker3"
+                  data-target-input="nearest"
+                >
+                  <input
+                    type="time"
+                    class="form-control datetimepicker-input"
+                    id="start"
+                    placeholder="start time"
+                    formControlName="start_time"
+                    [ngClass]="{
+                      invalid:
+                        book.get('start_time')!.invalid &&
+                        book.get('start_time')!.touched
+                    }"
+                  />
+                </div>
+                <div
+                  *ngIf="book.get('start_time')!.invalid && book.get('start_time')!.touched && book.get('start_time')!.errors?.['required'] "
+                >
+                  <span style="color: red">* This field is required </span>
+                </div>
+              </div>
+
+              <div class="col-md-6 form-group">
+                <label for="start">Time Out</label>
+
+                <div
+                  class="input-group date"
+                  id="datetimepicker3"
+                  data-target-input="nearest"
+                >
+                  <input
+                    type="time"
+                    class="form-control datetimepicker-input"
+                    id="end"
+                    placeholder="Time"
+                    formControlName="end_time"
+                    [ngClass]="{
+                      invalid:
+                        book.get('end_time')!.invalid &&
+                        book.get('end_time')!.touched
+                    }"
+                  />
+                </div>
+                <div
+                  *ngIf="book.get('end_time')!.invalid && book.get('end_time')!.touched && book.get('end_time')!.errors?.['required'] "
+                >
+                  <span style="color: red">*This field is required </span>
+                </div>
+              </div>
+              <div class="col-md-12 form-group ">
+                <label for="person"> Choose A company Number:</label>
+                <select
+                  formControlName="comment"
+                  name="comment"
+                  class="form-control custom-select"
+                  id="person"
+                >
+                  <option selected disabled>A Company Numper</option>
+                  <option value="2 Persons">2 Persons</option>
+                  <option value="4 Persons">4 Persons</option>
+                  <option value="5 Persons">5 Persons</option>
+                  <option value="6 Persons">6 Persons</option>
+                  <option value="7 Persons">7 Persons</option>
+                  <option value="8 Persons">8 Persons</option>
+                </select>
+              </div>
+              <div *ngIf="Auth" class="col-md-12 text-center">
+                <button
+                  class="btn btn-primary btn-shadow btn-lg mb-5"
+                  type="submit"
+                  name="submit"
+                  [disabled]="
+                    book.invalid ||
+                    book.get('date')!.value < current ||
+                    book.get('start_time')!.value > book.get('end_time')!.value
+                  "
+                >
+                  reserve now
+                </button>
+              </div>
+              <div class="col-md-12 form-group">
+                <div class="row">
+                  <div class="col-12 text-center fs-6 fw-bold mt-3">
+                    {{ message }}
+                  </div>
+                  <div *ngIf="reserved" class="col-12 mt-2 text-end">
+                    <a routerLink="/menu"
+                      >Go Now<i class="fa-solid fa-circle-arrow-right"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="!Auth" class="col-md-12 text-center p-0">
+                <a href="/signup"
+                  class="btn btn-primary btn-shadow btn-lg mb-5"
+                >
+                  Register Now To Book Table
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

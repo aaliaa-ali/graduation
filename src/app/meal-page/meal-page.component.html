@@ -1,0 +1,45 @@
+<section id="gtco-special-dishes" class="bg-grey section-padding">
+  <div class="container">
+    <div class="section-content">
+      <div class="heading-section text-center">
+        <span class="subheading"> Specialties </span>
+        <h2>{{ SelectedMeal.category?.name }}</h2>
+      </div>
+      <div class="row mt-5 justify-content-center" id="meal1">
+        <div class="col-lg-5 col-md-6 align-self-center py-3">
+          <h2 class="special">{{ SelectedMeal.name }}</h2>
+          <div class="dishes-text">
+            <p>
+              {{ SelectedMeal.description }}
+            </p>
+            <div>
+              <p class="m-0" style="font-size: 20px; font-weight: 700">
+                <i class="fa-solid fa-utensils"></i> Side Dishes
+              </p>
+              <span class="px-2" *ngFor="let opt of SelectedMeal.option">
+                <span
+                  ><i class="fa-solid fa-check"></i
+                  ><span style="font-weight: 500">{{ opt.name }}</span>
+                </span>
+              </span>
+            </div>
+
+            <h3
+              style="font-size: 25px; margin-top: 10px"
+              class="special-dishes-price"
+            >
+              ${{ SelectedMeal.price }}
+            </h3>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img
+            src="{{ SelectedMeal.media[0].original_url }}"
+            alt=""
+            class="img-fluid shadow w-100"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
