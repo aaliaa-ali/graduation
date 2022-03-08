@@ -4,7 +4,7 @@
       class="navbar-brand navbar-brand-center d-flex align-items-center p-0 only-mobile"
       href="/"
     >
-      <img src="../../../assets/img/logo.png" alt="" />
+      <img src="assets/img/logo.png" alt="" />
     </a>
     <button
       class="navbar-toggler"
@@ -23,11 +23,6 @@
       id="navbarSupportedContent"
     >
       <ul class="navbar-nav d-flex justify-content-between">
-        <!-- <li class="nav-item only-desktop">
-          <a class="nav-link" id="side-nav-open" href="#">
-            <span class="lnr lnr-menu"></span>
-          </a>
-        </li> -->
         <div class="d-flex flex-lg-row flex-column">
           <li class="nav-item active">
             <a class="nav-link" routerLink="/home"
@@ -40,34 +35,9 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/ourteam">Team</a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" (click)="freg('reserve')">ReserveNow</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" id="love" routerLink="/favourite"
-              ><img src="../../../assets/img/healthy-food.png" alt=""
-            /></a>
-            <!-- <span>
-             
-                <div class="ciircle">{{ number() }}</div></a
-              >
-            </span> -->
-          </li>
-        </div>
-      </ul>
-
-      <a
-        class="navbar-brand navbar-brand-center d-flex align-items-center only-desktop"
-        href="#"
-      >
-        <img src="../../../assets/img/logo.png" alt="" />
-      </a>
-      <ul class="navbar-nav d-flex justify-content-end">
-        <div class="d-flex flex-lg-row flex-column justify-content-end">
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
-              href="#"
               id="navbarDropdown"
               role="button"
               data-toggle="dropdown"
@@ -86,36 +56,84 @@
               >
             </div>
           </li>
+        </div>
+      </ul>
+
+      <a
+        class="navbar-brand navbar-brand-center d-flex align-items-center only-desktop"
+        href="#"
+      >
+        <img src="assets/img/logo.png" alt="" />
+      </a>
+      <ul class="navbar-nav d-flex justify-content-end">
+        <div class="d-flex flex-lg-row flex-column justify-content-end">
           <li class="nav-item active">
             <a class="nav-link" routerLink="/menu">Menu</a>
           </li>
-
-          <li *ngIf="!Auth" class="nav-item dropdown">
-            <a class="nav-link" routerLink="/signin">Login</a>
-          </li>
-          <li *ngIf="!Auth" class="nav-item dropdown">
-            <a class="nav-link" routerLink="/signup">Register</a>
-          </li>
-          <li *ngIf="Auth" class="nav-item dropdown">
-            <a class="nav-link" routerLink="/myreservation" 
-              >MyReServation</a
-            >
-          </li>
-          <li *ngIf="Auth" class="nav-item dropdown">
-            <a class="nav-link" routerLink="/signin" (click)="logOut()"
-              >LogOut</a
-            >
+          <li class="nav-item">
+            <a class="nav-link" (click)="freg('reserve')">ReserveNow</a>
           </li>
           <li class="nav-item dropdown">
-            <span>
+            <a
+              *ngIf="Auth"
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-user-check"></i> Hi,Aliaa
+            </a>
+            <a
+              *ngIf="!Auth"
+              class="nav-link dropdown-toggle"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-user-check"></i> Account
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" id="love" routerLink="/favourite"
+                ><i style="font-size: 18px" class="fa-regular fa-heart"></i>
+                Favourite</a
+              >
+              <a *ngIf="!Auth" class="dropdown-item" routerLink="/signin"
+                ><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a
+              >
+              <a *ngIf="!Auth" class="dropdown-item" routerLink="/signup">
+                <i class="fa-solid fa-user-pen"></i> Register</a
+              >
+              <a *ngIf="Auth" class="dropdown-item" routerLink="/myreservation"
+                ><i class="fa-solid fa-utensils"></i> MyReServation</a
+              >
+              <a
+                *ngIf="Auth"
+                class="dropdown-item"
+                routerLink="/signin"
+                (click)="logOut()"
+                ><i id="logout" class="fa-solid fa-arrow-right-to-bracket"></i>
+                LogOut</a
+              >
+            </div>
+          </li>
+         
+          <li class="nav-item dropdown">
+            <a  routerLink="/order">
               <i
                 class="fa-solid fa-cart-shopping shoping"
                 id="cart"
-                routerLink="/order"
+               
                 style="position: relative"
               >
                 <div class="ciircle">{{ number() }}</div>
-              </i></span
+              </i>
+              Cart</a
             >
           </li>
         </div>

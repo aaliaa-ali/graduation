@@ -157,7 +157,7 @@
           </div>
 
           <div class="form-group form-button col-12">
-            <div style="border: 0px" class="d-flex field-container">
+            <div  class="d-flex field-container border-0">
               <input
                 type="submit"
                 name="signup"
@@ -171,6 +171,9 @@
                 "
               />
             </div>
+            <div class="d-flex field-container justify-content-center border-0 mt-2">
+              <a href="/signin"> Already Have Account</a>
+            </div>
           </div>
           <div *ngIf="error">
             {{ error.email }}
@@ -181,10 +184,7 @@
           </div>
         </form>
         <div class="col-lg-6 .col-md-6 col-sm-12 col-12 image">
-          <img src="../../assets/img/signup.jpg" alt="sing up image" />
-        </div>
-        <div class="col-lg-6 .col-md-6 col-sm-12 col-12 image text-center">
-          <a href="/signin"> Already Have Account</a>
+          <img src="assets/img/signup.jpg" alt="sing up image" />
         </div>
       </div>
     </div>

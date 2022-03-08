@@ -1,7 +1,7 @@
 <div *ngIf="checked" class="container my-5">
   <div class="row justify-content-center">
     <div class="col-8 text-center">
-      <img src="../../assets/img/green-check-mark.jpg" alt="" />
+      <img src="assets/img/green-check-mark.jpg" alt="" />
       <p class="my-5">
         Your Reservation Done Succesfully And your order will be prepared in
         restaurant
@@ -28,7 +28,10 @@
           </div>
           <div class="col-md-8 ps-md-5">
             <div class="card-body">
-              <h5 class="card-title">{{ order.name }}</h5>
+              <div class="d-flex justify-content-between">
+                <h4 class="card-title">{{ order.name }}</h4>
+                <h4 class="card-title">${{ order.price }}</h4>
+              </div>
               <p class="card-text">
                 {{ order.description }}
               </p>

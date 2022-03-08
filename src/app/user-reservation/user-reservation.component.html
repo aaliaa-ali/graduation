@@ -1,6 +1,21 @@
-<!-- <p>list-order works!</p> -->
-<!-- <p>list-order works!</p> -->
-<div class="container">
+<div *ngIf="data.length == 0" class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-8 text-center ">
+      <img src="assets/img/empty order.PNG" alt="" />
+
+      <div class="my-5">
+        <h4>You have placed no orders yet!</h4>
+        <p>
+          All your orders will be saved here for you to access their state
+          anytime. Your Reservation Done Succesfully And your order will be
+          prepared in restaurant
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="data.length > 0" class="container">
   <div class="row gutters">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
       <div class="card">
@@ -43,7 +58,7 @@
                             </p>
                           </td>
                           <td>${{ ite.get_meals[0].price }}</td>
-                          <td>{{ite.num }}</td>
+                          <td>{{ ite.num }}</td>
                           <td>${{ ite.num * ite.get_meals[0].price }}</td>
                         </tr>
                         <tr class="d-flex justify-content-end">

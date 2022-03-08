@@ -136,3 +136,14 @@ body{
 .custom-actions-btns .btn {
     margin: .3rem 0 .3rem .3rem;
 }
+
+
+@media screen and (min-width: 576px) {
+    img {
+width: 40%;    }
+  }
+
+  @media screen and (max-width: 576px) {
+    img {
+width: 80%;    }
+  }
