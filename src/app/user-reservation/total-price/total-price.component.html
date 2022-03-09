@@ -11,9 +11,9 @@
 <td>
   <p>
     
-    {{ data?.date }}
+    {{ data?.date|date:'EEEE, MMMM d, y' }}
   </p>
   <h5 class="text-success">
-    <strong>${{ data?.total }}</strong>
+    <strong>{{ data?.total|currency:'USD' }}</strong>
   </h5>
 </td>

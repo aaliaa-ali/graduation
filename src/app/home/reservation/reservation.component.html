@@ -107,7 +107,7 @@
                   <span style="color: red">*This field is required </span>
                 </div>
               </div>
-              <div class="col-md-12 form-group ">
+              <div class="col-md-12 form-group">
                 <label for="person"> Choose A company Number:</label>
                 <select
                   formControlName="comment"
@@ -151,7 +151,8 @@
                 </div>
               </div>
               <div *ngIf="!Auth" class="col-md-12 text-center p-0">
-                <a href="/signup"
+                <a
+                  routerLink="/signup"
                   class="btn btn-primary btn-shadow btn-lg mb-5"
                 >
                   Register Now To Book Table

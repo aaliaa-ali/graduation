@@ -21,9 +21,9 @@
           {{ meal.name }}
         </div>
         <div class="card-text">
-          {{ meal.description }}
+          {{ meal.description |text}}
         </div>
-        <div class="card-text">$ {{ meal.price }}</div>
+        <div class="card-text"> {{ meal.price | currency :'USD' }}</div>
         <a (click)="addorder(meal)" class="card-button"> Add To Cart</a>
       </div>
     </div>

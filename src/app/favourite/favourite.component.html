@@ -39,9 +39,9 @@
             >
               {{ order.name }}
             </h5>
-            <h5 class="card-title mt-3 mb-3">{{ order.price }}</h5>
+            <h5 class="card-title mt-3 mb-3">{{ order.price |currency:'USD' }}</h5>
           </div>
-          <p class="card-text px-3">T{{ order.description }}</p>
+          <p class="card-text px-3">T{{ order.description |text:45 }}</p>
         </div>
       </div>
     </div>

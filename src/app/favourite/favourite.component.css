@@ -32,10 +32,7 @@ img{
     box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
   }
   .card-text{
-    height:45px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;  
+    height:70px;
     font-size: 14px;
     color: #636262;
   }
