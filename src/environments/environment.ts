@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  Api:'http://resto-resturant.herokuapp.com/'
+  Api: 'https://resto-resturant.herokuapp.com/',
   // Api: 'http://localhost:8000/api/'
 };
 
