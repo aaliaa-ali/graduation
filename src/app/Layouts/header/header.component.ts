@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   show:boolean=true
   Auth!:boolean
   reserve:any="reserve";
+  UserName!:any
   constructor(private router:Router,private mealservice:MealService,
     private OrderService:OrderService,
     private UserService:UserService,
@@ -24,6 +25,7 @@ export class HeaderComponent implements OnInit {
    this.UserService.Auth.subscribe(Auth=>{
     this.Auth=Auth
     })
+    this.UserService.UserName.subscribe(name=>this.UserName=name)
     this.UserService.autoLogin()
   }
   freg(reserve:string)

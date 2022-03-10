@@ -11,23 +11,19 @@ import { Reservation } from 'src/app/shared/model/reservation';
   styleUrls: ['./reservation.component.css'],
 })
 export class ReservationComponent implements OnInit {
-  
-  current:any=formatDate(new Date(),'yyyy-MM-dd', 'en');
+  current: any = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   // currentMonth:any= this.current.setMonth(this.current.getMonth()+1);
 
-
-
   Auth!: boolean;
-  table_id!:string
+  table_id!: string;
   message!: string | undefined;
-  reserved:boolean=false
-
+  reserved: boolean = false;
 
   book = this.fb.group({
     date: ['', [Validators.required]],
     start_time: ['', [Validators.required]],
     end_time: ['', [Validators.required]],
-    comment: [''],
+    comment: ['', [Validators.required]],
   });
   constructor(
     private fb: FormBuilder,
@@ -36,17 +32,17 @@ export class ReservationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.UserService.Auth.subscribe(Auth=>{
-      this.Auth=Auth
-      })
-      this.UserService.autoLogin()
+    this.UserService.Auth.subscribe((Auth) => {
+      this.Auth = Auth;
+    });
+    this.UserService.autoLogin();
     console.log(formatDate(new Date(), 'MM/dd/yyyy', 'en'));
   }
   onSubmit(reservation: any) {
-
     this.ReservationService.TableCheck(reservation.value).subscribe(
       (ResData) => {
-        if(ResData.available==true){
+        console.log(ResData)
+        if (ResData.available == true) {
           let reservationData = {
             start_time: reservation.value.start_time,
             end_time: reservation.value.end_time,
@@ -54,13 +50,14 @@ export class ReservationComponent implements OnInit {
             comment: reservation.value.comment,
             table_id: ResData.table_id,
           };
-          this.message="Yor table is reserved succsfully Go to Menu to Complete Reservation"
-          this.ReservationService.ColectData(reservationData)
-          this.book.reset()
-          this.reserved=true
-        }else{
-          this.message="There Is No Empty tables please select Another date"
-          this.reserved=false
+          this.message =
+            'Yor table is reserved succsfully Go to Menu to Complete Reservation';
+          this.ReservationService.ColectData(reservationData);
+          this.book.reset();
+          this.reserved = true;
+        } else {
+          this.message = 'There Is No Empty tables please select Another date';
+          this.reserved = false;
         }
       },
       (error) => {

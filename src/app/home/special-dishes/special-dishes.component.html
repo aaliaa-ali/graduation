@@ -19,7 +19,7 @@
             </p>
             <h3 class="special-dishes-price">${{ SpecialMeal?.[0].price }}</h3>
 
-            <a href="#" class="btn-primary mt-3">book a table<span><i class="fa fa-long-arrow-right"></i></span
+            <a (click)="freg('reserve')" class="btn-primary mt-3">book a table<span><i class="fa fa-long-arrow-right"></i></span
               ></a>
           </div>
         </div>
@@ -27,7 +27,7 @@
           class="col-lg-5 offset-lg-2 col-md-6 align-self-center mt-4 mt-md-0"
         >
           <img
-            src="{{ SpecialMeal?.[0].media[0].original_url }}"
+            src="{{ SpecialMeal?.[0].medially[0].file_url}}"
             alt=""
             class="img-fluid shadow w-100"
           />
@@ -38,7 +38,7 @@
           class="col-lg-5 col-md-6 align-self-center order-2 order-md-1 mt-4 mt-md-0"
         >
           <img
-            src="{{ SpecialMeal?.[1].media[0].original_url }}"
+            src="{{ SpecialMeal?.[1].medially[0].file_url }}"
             alt=""
             class="img-fluid shadow w-100"
           />
@@ -57,7 +57,7 @@
 
             </p>
             <h3 class="special-dishes-price">${{ SpecialMeal?.[1].price }}</h3>
-            <a href="#" class="btn-primary mt-3"
+            <a (click)="freg('reserve')" class="btn-primary mt-3"
               >book a table <span><i class="fa fa-long-arrow-right"></i></span
             ></a>
           </div>

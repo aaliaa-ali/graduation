@@ -3,3 +3,19 @@
     font-size: 60px;
     color: #f34949;
 }
+/* .imgContainer{
+    height: 350px;
+    width: 45%;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+
+} */
+.boxed-page.section-padding{
+padding-bottom: 0 !important;
+}
+img{
+    height: 50vh;
+    border-radius: 5%;
+
+}

@@ -84,7 +84,7 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <i class="fa-solid fa-user-check"></i> Hi,Aliaa
+              <i class="fa-solid fa-user-check"></i> Hi,{{ UserName |text:5}}
             </a>
             <a
               *ngIf="!Auth"
@@ -131,7 +131,7 @@
                
                 style="position: relative"
               >
-                <div class="ciircle">{{ number() }}</div>
+            <div class="ciircle">{{ number() }}</div>
               </i>
               Cart</a
             >

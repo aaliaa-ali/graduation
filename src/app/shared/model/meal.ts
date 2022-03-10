@@ -1,7 +1,8 @@
 export interface Meal {
     name:string,
     id?:number,
-    media:any,
+    medially:any,
+    media?:any,
     price:number,
     description:string,
     category_id:number,

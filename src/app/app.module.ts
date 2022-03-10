@@ -27,6 +27,7 @@ import { UserReservationComponent } from './user-reservation/user-reservation.co
 import { TotalPriceComponent } from './user-reservation/total-price/total-price.component';
 import { TextPipe } from './shared/pipes/text.pipe';
 
+
 @NgModule({
   declarations: [
     AppComponent,

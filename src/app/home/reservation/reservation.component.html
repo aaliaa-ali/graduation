@@ -21,6 +21,7 @@
           >
             <div class="row">
               <div class="col-md-12 form-group">
+                <label for="end">Date:</label>
                 <div
                   class="input-group date"
                   id="datetimepicker4"
@@ -38,7 +39,7 @@
                 </div>
                 <div
                   *ngIf="
-                    current + 7 < book.get('date')!.value < current &&
+                    current > book.get('date')!.value &&
                     book.get('date')!.touched &&
                     book.get('date')!.valid
                   "
@@ -46,14 +47,14 @@
                   <span style="color: red">*Please Enter a valid date </span>
                 </div>
                 <div
-                  *ngIf="book.get('date')!.invalid && book.get('date')!.touched && book.get('date')!.errors?.['required'] "
+                  *ngIf="book.get('date')!.invalid && book.get('date')!.touched"
                 >
                   <span style="color: red">*This field is required </span>
                 </div>
               </div>
 
               <div class="col-md-6 form-group">
-                <label for="end">Time In</label>
+                <label for="end">Time In:</label>
 
                 <div
                   class="input-group date"
@@ -74,14 +75,25 @@
                   />
                 </div>
                 <div
-                  *ngIf="book.get('start_time')!.invalid && book.get('start_time')!.touched && book.get('start_time')!.errors?.['required'] "
+                  *ngIf="
+                    book.get('start_time')!.invalid &&
+                    book.get('start_time')!.touched
+                  "
                 >
                   <span style="color: red">* This field is required </span>
+                </div>
+                <div
+                  *ngIf="
+                    book.get('start_time')!.value > book.get('end_time')!.value &&
+                    book.get('end_time')!.valid
+                  "
+                >
+                  <span style="color: red">* Enter Valid Time </span>
                 </div>
               </div>
 
               <div class="col-md-6 form-group">
-                <label for="start">Time Out</label>
+                <label for="start">Time Out:</label>
 
                 <div
                   class="input-group date"
@@ -102,7 +114,10 @@
                   />
                 </div>
                 <div
-                  *ngIf="book.get('end_time')!.invalid && book.get('end_time')!.touched && book.get('end_time')!.errors?.['required'] "
+                  *ngIf="
+                    book.get('end_time')!.invalid &&
+                    book.get('end_time')!.touched
+                  "
                 >
                   <span style="color: red">*This field is required </span>
                 </div>
@@ -123,6 +138,14 @@
                   <option value="7 Persons">7 Persons</option>
                   <option value="8 Persons">8 Persons</option>
                 </select>
+                <div
+                *ngIf="
+                  book.get('comment')!.invalid &&
+                  book.get('comment')!.touched
+                "
+              >
+                <span style="color: red">* This field is required </span>
+              </div>
               </div>
               <div *ngIf="Auth" class="col-md-12 text-center">
                 <button

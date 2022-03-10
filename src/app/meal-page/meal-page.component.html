@@ -1,4 +1,4 @@
-<section id="gtco-special-dishes" class="bg-grey section-padding">
+<section id="gtco-special-dishes" class="bg-grey section-padding py-5">
   <div class="container">
     <div class="section-content">
       <div class="heading-section text-center">
@@ -6,13 +6,13 @@
         <h2>{{ SelectedMeal.category?.name }}</h2>
       </div>
       <div class="row mt-5 justify-content-center" id="meal1">
-        <div class="col-lg-5 col-md-6 align-self-center py-3">
+        <div class="col-lg-5 col-md-10 align-self-center py-3">
           <h2 class="special">{{ SelectedMeal.name }}</h2>
           <div class="dishes-text">
             <p>
               {{ SelectedMeal.description }}
             </p>
-            <div>
+            <div *ngIf="SelectedMeal.option.length>0">
               <p class="m-0" style="font-size: 20px; font-weight: 700">
                 <i class="fa-solid fa-utensils"></i> Side Dishes
               </p>
@@ -28,16 +28,17 @@
               style="font-size: 25px; margin-top: 10px"
               class="special-dishes-price"
             >
-              ${{ SelectedMeal.price }}
+              {{ SelectedMeal.price |currency:'USD'}}
             </h3>
           </div>
         </div>
-        <div class="col-lg-6">
+        <div class=" imgContainer text-center col-lg-6">
+        <!-- <div  [style]="'background-image: url(' +SelectedMeal.media[0].original_url + ')'" class=" imgContainer col-lg-6"> -->
           <img
-            src="{{ SelectedMeal.media[0].original_url }}"
+            src="{{ SelectedMeal.medially[0].file_url }}"
             alt=""
-            class="img-fluid shadow w-100"
-          />
+            class="img-fluid img-cover"  
+            width="500px"        />
         </div>
       </div>
     </div>

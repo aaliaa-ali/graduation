@@ -23,15 +23,18 @@ export class OrderService {
 
     if (this.orderarray.some(even)) {
       var index = this.uniqueOrder.findIndex((x) => x.id == meal.id);
-      this.uniqueOrder.splice(index, 1);
+      // this.uniqueOrder.splice(index, 1);
       this.orderarray.push(meal);
-      meal.count = 0;
+      // meal.count = 0;
+      let x=0
       this.orderarray.forEach((element) => {
         if (element.id == meal.id) {
-          meal.count++;
+          // meal.count++;
+          x++
         }
       });
-      this.uniqueOrder.push(meal);
+      this.uniqueOrder[index].count=x;
+      // this.uniqueOrder.push(meal);
     } else {
       meal.count = 1;
       this.orderarray.push(meal);

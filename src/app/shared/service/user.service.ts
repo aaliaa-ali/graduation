@@ -12,18 +12,18 @@ import { environment } from 'src/environments/environment';
 export class UserService {
   loginErrors = new Subject<any>();
   Auth = new Subject<boolean>();
+  UserName = new Subject<any>();
   getUser() {}
 
   addUser(user: any) {
-    console.log(user);
-
     return this.Http.post<User>(
-      environment.Api+'user/register',
+      environment.Api + 'user/register',
       user
     ).subscribe(
       (ResData) => {
         console.log(ResData);
         localStorage.setItem('toke', ResData.token);
+        localStorage.setItem('UserName', ResData.UserName);
         this.autoLogin();
         this.router.navigate(['/home']);
       },
@@ -34,13 +34,12 @@ export class UserService {
   }
 
   login(data: User) {
-    this.Http.post<User>(
-      environment.Api+'user/login',
-      data
-    ).subscribe(
+    this.Http.post<User>(environment.Api + 'user/login', data).subscribe(
       (ResData) => {
+        console.log(ResData);
         if (ResData.token) {
           localStorage.setItem('toke', ResData.token);
+          localStorage.setItem('UserName', ResData.UserName);
           this.autoLogin();
           this.router.navigate(['/home']);
         } else {
@@ -54,20 +53,20 @@ export class UserService {
   }
   logOut() {
     const headers = new HttpHeaders({
-      Authorization: localStorage.getItem('toke')??""
-    })
-    this.Http.post<User>(
-      environment.Api+'user/logout',"log",{headers}).subscribe(
-        data=>{
-          console.log(data)
-        }
-      )
+      Authorization: localStorage.getItem('toke') ?? '',
+    });
+    this.Http.post<User>(environment.Api + 'user/logout', 'log', {
+      headers,
+    }).subscribe((data) => {
+      console.log(data);
+    });
     localStorage.removeItem('toke');
     this.Auth.next(false);
   }
   autoLogin() {
     if (localStorage.getItem('toke')) {
       this.Auth.next(true);
+      this.UserName.next(localStorage.getItem('UserName'));
     } else {
       this.Auth.next(false);
     }
