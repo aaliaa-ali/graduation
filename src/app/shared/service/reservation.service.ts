@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ReservationService {
+  
   handler: any = null;
   checked = new Subject<boolean>();
   reservationData = new Subject<Reservation>();
@@ -80,7 +81,6 @@ export class ReservationService {
 
   payment(toto: any, amount: number) {
     let data = { token: toto, price: amount };
-    console.log(data);
     const headers = new HttpHeaders({
       Authorization: localStorage.getItem('toke') ?? '',
     });
@@ -93,8 +93,8 @@ export class ReservationService {
           { headers }
         ).subscribe(
           (ResData) => {
-            console.log(ResData);
             this.OrderService.DeleteOrder();
+            this.SendData.length=0
             this.checked.next(true);
           },
           (error) => {
