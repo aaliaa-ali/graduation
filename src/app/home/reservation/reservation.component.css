@@ -1,6 +1,7 @@
 .custom-select {
     position: relative;
     cursor: pointer;
+    /* bottom: 25px; */
   }
 
 .select-selected:after {

@@ -7,7 +7,6 @@ import { FooterComponent } from './Layouts/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { CategoriesComponent } from './categories/categories.component';
-import { CategoryComponent } from './categories/category/category.component';
 import { SliderComponent } from './home/slider/slider.component';
 import { SpecialDishesComponent } from './home/special-dishes/special-dishes.component';
 import { MenuComponent } from './menu/menu.component';
@@ -36,7 +35,6 @@ import { TextPipe } from './shared/pipes/text.pipe';
     HomeComponent,
     WelcomeComponent,
     CategoriesComponent,
-    CategoryComponent,
     SliderComponent,
     SpecialDishesComponent,
     MenuComponent,
@@ -52,7 +50,7 @@ import { TextPipe } from './shared/pipes/text.pipe';
     FavouriteComponent,
     UserReservationComponent,
     TotalPriceComponent,
-    TextPipe
+    TextPipe,
   ],
   imports:
    [BrowserModule,

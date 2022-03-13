@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from './shared/service/user.service';
 
 @Component({
@@ -8,8 +8,8 @@ import { UserService } from './shared/service/user.service';
 })
 export class AppComponent implements OnInit {
   title = 'my-app';
-  constructor(private UserService:UserService){}
-  ngOnInit(){
-   this.UserService.autoLogin()
+  ngOnInit(){  }
+  closeNav(){
+    document.getElementById('navbarSupportedContent')?.classList.remove('show')
   }
 }

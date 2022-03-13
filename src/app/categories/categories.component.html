@@ -4,7 +4,9 @@
       <div class="row">
         <div
           class="col-sm-5 img-bg d-flex shadow align-items-center justify-content-center justify-content-md-end img-2"
-          style="background-image: url(assets/img/banana-pancakes-3-400x500.jpg)"
+          style="
+            background-image: url(assets/img/banana-pancakes-3-400x500.jpg);
+          "
         ></div>
         <div class="col-sm-7 py-5 pl-md-0 pl-4">
           <div class="heading-section pl-lg-5 ml-md-5">
@@ -13,21 +15,30 @@
           </div>
           <div class="pl-lg-5 ml-md-5">
             <p>
-              On her way she met a copy. The copy warned the Little Blind Text,
-              that where it came from it would have been rewritten a thousand
-              times and everything that was left from its origin would be the
-              word "and" and the Little Blind Text should turn around and return
-              to its own, safe country. A small river named Duden flows by their
-              place and supplies it with the necessary regelialia. It is a
-              paradisematic country, in which roasted parts of sentences fly
-              into your mouth.
+              Dear customers and friends. For the health, safety and well-being
+              of our customers, employees and communities,Resto Restaurant is
+              operating with a Limited team, Maintaining Colleague distancing at
+              work. Our team is certified trained in Covid-19 food preparation
+              and handling, we are following FSSAI food safety guidelines for
+              utmost care and hygiene😷. We have resumed contactless delivery
+              and takeout, please place your orders directly with us. So
+              whatever you want for dinner, lunch or breakfast we will be happy
+              to get it for you😇.
             </p>
           </div>
         </div>
       </div>
       <h3 class="mt-5">Our Categories</h3>
       <div class="row justify-content-center">
-        <app-category *ngFor="let category of categories" class="col-md-4 col-10"[category]="category" ></app-category>
+        <div class="col-md-4 col-10" *ngFor="let category of categories">
+          <a class="thumb-menu" routerLink="/menu">
+            <img
+              class="img-fluid img-cover"
+              src="{{ category.medially[0].file_url }}"
+            />
+            <h5>{{ category.name }}</h5>
+          </a>
+        </div>
       </div>
     </div>
   </div>

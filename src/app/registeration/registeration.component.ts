@@ -33,7 +33,7 @@ export class RegisterationComponent implements OnInit {
       '',
       [Validators.required, Validators.pattern('^01[0-2,5]{1}[0-9]{8}$')],
     ],
-    password: ['', Validators.required, Validators.minLength(8)],
+    password: ['',[ Validators.required, Validators.minLength(8)]],
     ConPass: ['', Validators.required],
   });
 
@@ -48,5 +48,8 @@ export class RegisterationComponent implements OnInit {
   onSubmit(signup: any) {
     console.log(signup.value);
     this.UserService.addUser(signup.value);
+    this.UserService.registererror.subscribe((error1) => {
+      this.error = error1.error.email[0];
+    });
   }
 }

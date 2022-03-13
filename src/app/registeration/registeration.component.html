@@ -7,7 +7,7 @@
       <div class="row signup-form d-flex justify-content-between">
         <!-- register-form -->
         <form
-          class="col-lg-6 .col-md-6 col-sm-12 col-12"
+          class="col-lg-6 col-md-6 col-sm-12 col-12"
           #signup="ngForm"
           [formGroup]="registeForm"
           (ngSubmit)="onSubmit(signup)"
@@ -17,11 +17,6 @@
               <i class="fa-solid fa-user"></i>
               <input
                 type="text"
-                [ngClass]="{
-                  invalid:
-                    registeForm.get('name')!.invalid &&
-                    registeForm.get('name')!.touched
-                }"
                 name="name"
                 id="name"
                 placeholder="Your Name"
@@ -31,16 +26,18 @@
               />
             </div>
             <div
-              *ngIf="registeForm.get('name')?.invalid && registeForm.get('name')!.touched && registeForm.get('name')!.errors?.['required'] "
+              *ngIf="registeForm.get('name')?.invalid &&
+               registeForm.get('name')!.touched && 
+               registeForm.get('name')!.errors?.['required'] "
             >
-              <span style="color: red">* This field is require </span>
+              <span class="error">* This field is require </span>
             </div>
 
             <div *ngIf="registeForm.get('name')?.errors?.['minlength'] ">
-              <span style="color: red">* must be more two character </span>
+              <span class="error">* must be more two character </span>
             </div>
             <div *ngIf="registeForm.get('name')?.errors?.['pattern'] ">
-              <span style="color: red">* Name must be characters </span>
+              <span class="error">* Name must be characters </span>
             </div>
           </div>
 
@@ -52,23 +49,23 @@
                 name="email"
                 id="email"
                 placeholder="Your Email"
-                [ngClass]="{
-                  invalid:
-                    registeForm.get('email')?.invalid &&
-                    registeForm.get('email')!.touched
-                }"
                 formControlName="email"
                 email="true"
               />
             </div>
             <div
-              *ngIf="registeForm.get('email')?.invalid && registeForm.get('email')!.touched && registeForm.get('email')!.errors?.['required'] "
+              *ngIf="registeForm.get('email')?.invalid && 
+              registeForm.get('email')!.touched &&
+               registeForm.get('email')!.errors?.['required'] "
             >
-              <span style="color: red">*This field is required </span>
+              <span class="error">*This field is required </span>
             </div>
 
             <div *ngIf="registeForm.get('email')?.errors?.['email'] ">
-              <span style="color: red">* Email Not Valid </span>
+              <span class="error">* Email Not Valid </span>
+            </div>
+            <div *ngIf="error">
+              <span class="error">* {{ error }}</span>
             </div>
           </div>
 
@@ -79,7 +76,7 @@
                 type="text"
                 name="phone"
                 id="phone"
-                placeholder="Enter Your Phone Number"
+                placeholder=" Your Phone Number"
                 formControlName="phone"
                 style="padding-left: 0"
               />
@@ -88,11 +85,11 @@
             <div
               *ngIf="registeForm.get('phone')?.invalid && registeForm.get('phone')!.touched && registeForm.get('phone')!.errors?.['required'] "
             >
-              <span style="color: red">*This field is required </span>
+              <span class="error">*This field is required </span>
             </div>
 
             <div *ngIf="registeForm.get('phone')?.errors?.['pattern'] ">
-              <span style="color: red">* phone Not Valid </span>
+              <span class="error">* phone Not Valid </span>
             </div>
           </div>
 
@@ -104,19 +101,19 @@
                 name="password"
                 id="pass"
                 placeholder="Enter Password"
-                [ngClass]="{
-                  invalid:
-                    registeForm.get('password')?.invalid &&
-                    registeForm.get('password')!.touched
-                }"
                 #pass
                 formControlName="password"
               />
             </div>
             <div
-              *ngIf="registeForm.get('password')?.invalid && registeForm.get('password')!.touched && registeForm.get('password')!.errors?.['required'] "
+              *ngIf="registeForm.get('password')?.invalid &&
+               registeForm.get('password')!.touched &&
+                registeForm.get('password')!.errors?.['required'] "
             >
-              <span style="color: red">*This field is required </span>
+              <span class="error">*This field is required </span>
+            </div>
+            <div *ngIf="registeForm.get('password')!.errors?.['minlength']">
+              <span class="error">*Password must be 8 or more </span>
             </div>
           </div>
 
@@ -128,19 +125,16 @@
                 name="ConPass"
                 id="re_pass"
                 placeholder="Repeat your password"
-                [ngClass]="{
-                  invalid:
-                    registeForm.get('ConPass')!.invalid &&
-                    registeForm.get('ConPass')!.touched
-                }"
                 formControlName="ConPass"
               />
             </div>
 
             <div
-              *ngIf="registeForm.get('ConPass')!.invalid && registeForm.get('ConPass')!.touched && registeForm.get('ConPass')!.errors?.['required'] "
+              *ngIf="registeForm.get('ConPass')!.invalid && 
+              registeForm.get('ConPass')!.touched &&
+               registeForm.get('ConPass')!.errors?.['required'] "
             >
-              <span style="color: red">*This field is required </span>
+              <span class="error">*This field is required </span>
             </div>
             <div
               *ngIf="
@@ -152,12 +146,12 @@
                 registeForm.get('ConPass')!.touched
               "
             >
-              <span style="color: red">*This field is misMatch </span>
+              <span class="error">*This field is misMatch </span>
             </div>
           </div>
 
           <div class="form-group form-button col-12">
-            <div  class="d-flex field-container border-0">
+            <div class="d-flex field-container border-0">
               <input
                 type="submit"
                 name="signup"
@@ -171,19 +165,14 @@
                 "
               />
             </div>
-            <div class="d-flex field-container justify-content-center border-0 mt-2">
+            <div
+              class="d-flex field-container justify-content-center border-0 my-3"
+            >
               <a routerLink="/signin"> Already Have Account</a>
             </div>
           </div>
-          <div *ngIf="error">
-            {{ error.email }}
-          </div>
-
-          <div *ngIf="error">
-            {{ error.password }}
-          </div>
         </form>
-        <div class="col-lg-6 .col-md-6 col-sm-12 col-12 image">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-12 image">
           <img src="assets/img/signup.jpg" alt="sing up image" />
         </div>
       </div>

@@ -1,6 +1,7 @@
 <section id="gtco-special-dishes" class="bg-grey section-padding py-5">
   <div class="container">
     <div class="section-content">
+      <button routerLink="/menu" class="MenuBtn"><i class="fa-solid fa-arrow-left"></i>Back TO Menu</button>
       <div class="heading-section text-center">
         <span class="subheading"> Specialties </span>
         <h2>{{ SelectedMeal.category?.name }}</h2>
@@ -33,7 +34,6 @@
           </div>
         </div>
         <div class=" imgContainer text-center col-lg-6">
-        <!-- <div  [style]="'background-image: url(' +SelectedMeal.media[0].original_url + ')'" class=" imgContainer col-lg-6"> -->
           <img
             src="{{ SelectedMeal.medially[0].file_url }}"
             alt=""

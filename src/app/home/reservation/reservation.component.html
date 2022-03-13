@@ -6,7 +6,7 @@
 >
   <div class="container">
     <div class="row">
-      <div class="col-lg-5 col-md-8 col-12 col-sm-10">
+      <div class="col-xl-5 col-lg-6 col-md-8 col-12 col-sm-10">
         <div class="section-content bg-white p-5 shadow">
           <div class="heading-section text-center">
             <span class="subheading"> Reservation </span>
@@ -31,10 +31,6 @@
                     type="date"
                     class="form-control datetimepicker-input"
                     formControlName="date"
-                    [ngClass]="{
-                      invalid:
-                        book.get('date')!.invalid && book.get('date')!.touched
-                    }"
                   />
                 </div>
                 <div
@@ -44,12 +40,12 @@
                     book.get('date')!.valid
                   "
                 >
-                  <span style="color: red">*Please Enter a valid date </span>
+                  <span class="error">*Please Enter a valid date </span>
                 </div>
                 <div
                   *ngIf="book.get('date')!.invalid && book.get('date')!.touched"
                 >
-                  <span style="color: red">*This field is required </span>
+                  <span class="error">*This field is required </span>
                 </div>
               </div>
 
@@ -67,11 +63,6 @@
                     id="start"
                     placeholder="start time"
                     formControlName="start_time"
-                    [ngClass]="{
-                      invalid:
-                        book.get('start_time')!.invalid &&
-                        book.get('start_time')!.touched
-                    }"
                   />
                 </div>
                 <div
@@ -80,15 +71,15 @@
                     book.get('start_time')!.touched
                   "
                 >
-                  <span style="color: red">* This field is required </span>
+                  <span class="error">* This field is required </span>
                 </div>
                 <div
                   *ngIf="
-                    book.get('start_time')!.value > book.get('end_time')!.value &&
-                    book.get('end_time')!.valid
+                    book.get('start_time')!.value >
+                      book.get('end_time')!.value && book.get('end_time')!.valid
                   "
                 >
-                  <span style="color: red">* Enter Valid Time </span>
+                  <span class="error">* Enter Valid Time </span>
                 </div>
               </div>
 
@@ -106,11 +97,6 @@
                     id="end"
                     placeholder="Time"
                     formControlName="end_time"
-                    [ngClass]="{
-                      invalid:
-                        book.get('end_time')!.invalid &&
-                        book.get('end_time')!.touched
-                    }"
                   />
                 </div>
                 <div
@@ -119,18 +105,18 @@
                     book.get('end_time')!.touched
                   "
                 >
-                  <span style="color: red">*This field is required </span>
+                  <span class="error">*This field is required </span>
                 </div>
               </div>
               <div class="col-md-12 form-group">
-                <label for="person"> Choose A company Number:</label>
+                <label for="person"> Choose Persons Number:</label>
                 <select
                   formControlName="comment"
                   name="comment"
                   class="form-control custom-select"
                   id="person"
                 >
-                  <option selected disabled>A Company Numper</option>
+                  <option selected disabled>Person Numper</option>
                   <option value="2 Persons">2 Persons</option>
                   <option value="4 Persons">4 Persons</option>
                   <option value="5 Persons">5 Persons</option>
@@ -139,13 +125,12 @@
                   <option value="8 Persons">8 Persons</option>
                 </select>
                 <div
-                *ngIf="
-                  book.get('comment')!.invalid &&
-                  book.get('comment')!.touched
-                "
-              >
-                <span style="color: red">* This field is required </span>
-              </div>
+                  *ngIf="
+                    book.get('comment')!.invalid && book.get('comment')!.touched
+                  "
+                >
+                  <span class="error">* This field is required </span>
+                </div>
               </div>
               <div *ngIf="Auth" class="col-md-12 text-center">
                 <button
@@ -173,12 +158,12 @@
                   </div>
                 </div>
               </div>
-              <div *ngIf="!Auth" class="col-md-12 text-center p-0">
+              <div *ngIf="!Auth" class="col-12 text-center p-0">
                 <a
                   routerLink="/signup"
                   class="btn btn-primary btn-shadow btn-lg mb-5"
                 >
-                  Register Now To Book Table
+                  Register Now To Book
                 </a>
               </div>
             </div>

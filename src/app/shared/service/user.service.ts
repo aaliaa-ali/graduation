@@ -13,6 +13,7 @@ export class UserService {
   loginErrors = new Subject<any>();
   Auth = new Subject<boolean>();
   UserName = new Subject<any>();
+  registererror= new Subject<any>();
   getUser() {}
 
   addUser(user: any) {
@@ -28,7 +29,9 @@ export class UserService {
         this.router.navigate(['/home']);
       },
       (error) => {
-        console.log(error);
+        this.registererror.next(error);
+
+        // console.log(error);
       }
     );
   }

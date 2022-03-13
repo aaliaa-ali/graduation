@@ -15,6 +15,7 @@ img{
     font-size: 20px;
     transition:1s;
     cursor:pointer;
+    height: 40px;
   }
   .card-title i{  
     font-size:15px;

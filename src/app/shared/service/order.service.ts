@@ -1,10 +1,6 @@
-
-////////new update/////
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Meal } from '../model/meal';
-// import { Payment } from '../model/payment';
 
 @Injectable({
   providedIn: 'root',
@@ -14,27 +10,14 @@ export class OrderService {
   cartArray: Meal[] = [];
   orderarray: Meal[] = [];
   uniqueOrder: Meal[] = [];
-  arr: Meal[] = [...this.orderarray];
-
-  orderSum: number = 0;
 
   addorder(meal: Meal) {
-    let even = (element: any) => element.id === meal.id;
+    let found = (element: any) => element.id === meal.id;
 
-    if (this.orderarray.some(even)) {
+    if (this.orderarray.some(found)) {
       var index = this.uniqueOrder.findIndex((x) => x.id == meal.id);
-      // this.uniqueOrder.splice(index, 1);
       this.orderarray.push(meal);
-      // meal.count = 0;
-      let x=0
-      this.orderarray.forEach((element) => {
-        if (element.id == meal.id) {
-          // meal.count++;
-          x++
-        }
-      });
-      this.uniqueOrder[index].count=x;
-      // this.uniqueOrder.push(meal);
+      this.uniqueOrder[index].count++;
     } else {
       meal.count = 1;
       this.orderarray.push(meal);
@@ -76,11 +59,10 @@ export class OrderService {
         this.orderarray.splice(i, 1);
       }
     }
-    meal.count=0
+    meal.count = 0;
   }
   DeleteOrder() {
     this.orderarray.length = 0;
     this.uniqueOrder.length = 0;
   }
 }
-

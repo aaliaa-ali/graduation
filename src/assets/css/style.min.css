@@ -386,6 +386,7 @@ a:hover {
 .overlay .section-content {
   position: relative;
   z-index: 1;
+  bottom: 25px;
 }
 
 /*=====  End of OVERLAY  ======*/

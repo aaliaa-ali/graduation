@@ -45,17 +45,17 @@
               </div>
               <p class="card-text"></p>
               <div class="d-flex justify-content-between">
-                <button class="btn btn-primary" (click)="delateMeal(order)">
+                <a class="btn btn-primary" (click)="delateMeal(order)">
                   Delete
-                </button>
+                </a>
 
-                <button class="counter" (click)="addQty(order)">
+                <a class="counter" (click)="addQty(order)">
                   <i class="fa-solid fa-circle-plus"></i>
-                </button>
+                </a>
                 <h4 class="pt-2">Qty:{{ order.count }}</h4>
-                <button class="counter" (click)="decQty(order)">
+                <a class="counter" (click)="decQty(order)">
                   <i class="fa-solid fa-circle-minus"></i>
-                </button>
+                </a>
               </div>
             </div>
           </div>

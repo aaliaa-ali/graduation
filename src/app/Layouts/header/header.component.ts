@@ -38,5 +38,7 @@ export class HeaderComponent implements OnInit {
   logOut(){
     this.UserService.logOut()
   }
-
+  closeNav(){
+    document.getElementById('navbarSupportedContent')?.classList.remove('show')
+  }
 }

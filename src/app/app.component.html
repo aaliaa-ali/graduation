@@ -1,6 +1,9 @@
-<div class="boxed-page">
+<div  class="boxed-page">
   <app-header></app-header>
-  <router-outlet></router-outlet>
-  <app-footer></app-footer>
+  <div  (click)="closeNav()">
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </div>
+ 
   <!-- <app-menu-meals></app-menu-meals> -->
 </div>
