@@ -31,7 +31,6 @@
   position: relative;
   font-size: 40px;
   color: #f34949;
-    /* font-weight: 500   !important;   */
 }
 .orderContainer{
   height: 40vh;
@@ -41,6 +40,7 @@
   background-color: transparent;
 }
 input {
+  cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -60,4 +60,11 @@ input {
 input:checked {
   border: 6px solid black;
   outline: unset !important /* I added this one for Edge (chromium) support */
+}
+
+
+.spinner{
+  position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }

@@ -1,4 +1,3 @@
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,9 +11,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ReservationService {
-  
-  handler: any = null;
-  checked = new Subject<boolean>();
+  paymentLoading = new Subject<boolean>();
+  ReservationChecked = new Subject<boolean>();
   reservationData = new Subject<Reservation>();
   SendData: any[] = [];
 
@@ -31,10 +29,10 @@ export class ReservationService {
     console.log(this.SendData);
   }
   saveReservation(order: Meal[], price: any) {
-    if (this.SendData[0]?.table_id?true:false) {
-      this.pay(price);
+    if (this.SendData[0]?.table_id) {
+      this.loadStripe(price);
       this.SendData.splice(1);
-      this.SendData.push(order, price)
+      this.SendData.push(order, price);
     } else {
       this.router.navigateByUrl('#' + 'reserve');
     }
@@ -48,62 +46,39 @@ export class ReservationService {
       headers,
     });
   }
-  pay(amount: any) {
-    var handler = (<any>window).StripeCheckout.configure({
+  loadStripe(amount: number) {
+    const handler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51KX58pBmVrP9kTEPu5BezVgAPsbulPVD70Pd8OkRf0TXE6E4BgoyEJw0qATrbRp9ymZMPtqmhkWQqN5a0RHQnKRY00Zb43DjCN',
       locale: 'auto',
       token: (token: any) => {
         this.payment(token.id, amount);
       },
     });
-
     handler.open({
-      amount: amount * 100,
+      amount: amount,
+      name: 'Resto Restautant',
     });
   }
 
-  loadStripe() {
-    if (!window.document.getElementById('stripe-script')) {
-      var s = window.document.createElement('script');
-      s.id = 'stripe-script';
-      s.type = 'text/javascript';
-      s.src = 'https://checkout.stripe.com/checkout.js';
-      s.onload = () => {
-        this.handler = (<any>window).StripeCheckout.configure({
-          key: 'pk_test_51KX58pBmVrP9kTEPu5BezVgAPsbulPVD70Pd8OkRf0TXE6E4BgoyEJw0qATrbRp9ymZMPtqmhkWQqN5a0RHQnKRY00Zb43DjCN',
-          locale: 'auto',
-          token: function (token: any) {},
-        });
-      };
-      window.document.body.appendChild(s);
-    }
-  }
+  payment(token: any, amount: number) {
+    this.paymentLoading.next(true);
 
-  payment(toto: any, amount: number) {
-    let data = { token: toto, price: amount };
+    let data = { token: token, price: amount };
     const headers = new HttpHeaders({
       Authorization: localStorage.getItem('toke') ?? '',
     });
     this.Http.post(environment.Api + `payment`, data, { headers }).subscribe(
       (next) => {
-        console.log(next);
         this.Http.post<Reservation>(
           environment.Api + 'reserve',
           this.SendData,
           { headers }
-        ).subscribe(
-          (ResData) => {
-            this.OrderService.DeleteOrder();
-            this.SendData.length=0
-            this.checked.next(true);
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-      },
-
-      (error) => console.log(error)
+        ).subscribe((ResData) => {
+          this.OrderService.DeleteOrder();
+          this.SendData.length = 0;
+          this.ReservationChecked.next(true);
+        });
+      }
     );
   }
   constructor(

@@ -37,7 +37,5 @@ export class MenuMealsComponent implements OnInit {
        );      
     }else{
       this.FavouriteService.addToLocalFev(mymeal);    }
- 
   }
-
 }

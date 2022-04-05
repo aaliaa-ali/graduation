@@ -9,14 +9,14 @@ import { MealService } from 'src/app/shared/service/meal.service';
   styleUrls: ['./special-dishes.component.css']
 })
 export class SpecialDishesComponent implements OnInit {
-
   SpecialMeal!:any
   constructor(private MealService:MealService,private router:Router) { }
 
   ngOnInit(): void {
     this.MealService.getAll().subscribe(meals=>{
       this.SpecialMeal=meals
-      this.SpecialMeal.slice(0,2)
+     let specialDishes= this.SpecialMeal.slice(0,2)
+      this.MealService.specialDishes.next(specialDishes)
     });
 
   }

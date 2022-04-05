@@ -30,8 +30,6 @@ export class UserService {
       },
       (error) => {
         this.registererror.next(error);
-
-        // console.log(error);
       }
     );
   }

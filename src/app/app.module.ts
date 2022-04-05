@@ -25,6 +25,7 @@ import { FavouriteComponent } from './favourite/favourite.component';
 import { UserReservationComponent } from './user-reservation/user-reservation.component';
 import { TotalPriceComponent } from './user-reservation/total-price/total-price.component';
 import { TextPipe } from './shared/pipes/text.pipe';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { TextPipe } from './shared/pipes/text.pipe';
     UserReservationComponent,
     TotalPriceComponent,
     TextPipe,
+    LoadingSpinnerComponent,
   ],
   imports:
    [BrowserModule,

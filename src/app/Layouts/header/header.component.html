@@ -50,10 +50,10 @@
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" (click)="freg('meal1')"
-                >Beef Steak Sauce</a
+                >{{SpecialMeal?.[0].name}} </a
               >
               <a class="dropdown-item" (click)="freg('meal2')"
-                >Salmon Zucchini</a
+                >{{SpecialMeal?.[1].name}}</a
               >
             </div>
           </li>

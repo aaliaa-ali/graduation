@@ -10,14 +10,17 @@ import { ReservationService } from '../shared/service/reservation.service';
   styleUrls: ['./order-meals.component.css'],
 })
 export class OrderMealsComponent implements OnInit {
-  constructor(private orderservice: OrderService,private ReservationSErvice:ReservationService) {}
-  checked:boolean=false
-  price!:number
+  constructor(
+    private orderservice: OrderService,
+    private ReservationSErvice: ReservationService
+  ) {}
+  paymentLoading: boolean = false;
+  checked: boolean = false;
+  price!: number;
   display = true;
   listOrder!: Array<Meal>;
   uniqueOrder!: Meal[];
-  orderSum!:number;
-
+  orderSum!: number;
 
   ngOnInit(): void {
     this.listOrder = this.orderservice.orderarray;
@@ -25,40 +28,42 @@ export class OrderMealsComponent implements OnInit {
     if (this.listOrder.length > 0) {
       this.display = false;
     }
-    this.ReservationSErvice.checked.subscribe(data=>{
-      this.checked=data
-    })
+    this.ReservationSErvice.ReservationChecked.subscribe((data) => {
+      this.checked = data;
+    });
+    this.ReservationSErvice.paymentLoading.subscribe((data) => {
+      this.paymentLoading = data;
+    });
 
-    this.ReservationSErvice.loadStripe();
   }
 
   delateMeal(meal: Meal) {
-    this.orderservice.deleteMeal(meal)
-    if(this.listOrder.length == 0){
+    this.orderservice.deleteMeal(meal);
+    if (this.listOrder.length == 0) {
       this.display = true;
     }
   }
   addQty(meal: Meal) {
-    this.orderservice.addQty(meal)
+    this.orderservice.addQty(meal);
   }
   decQty(meal: Meal) {
-   this.orderservice.decQty(meal)
-   if(this.listOrder.length == 0){
-    this.display = true;
+    this.orderservice.decQty(meal);
+    if (this.listOrder.length == 0) {
+      this.display = true;
+    }
   }
+  Option(meal: any, id: any) {
+    meal.selectedOption = id;
   }
-  Option(meal:any,id:any){
-    meal.selectedOption=id
-  } 
-  CalcPrice(){
-    this.price=0
-    this.uniqueOrder.forEach(meal=>{
-     this.price=this.price+(meal.count*meal.price)
-    })
-    return this.price
+  CalcPrice() {
+    this.price = 0;
+    this.uniqueOrder.forEach((meal) => {
+      this.price = this.price + meal.count * meal.price;
+    });
+    return this.price;
   }
-  orderNow(){
-      let  Total={price:this.price}
-       this.ReservationSErvice.saveReservation(this.uniqueOrder,Total)
+  orderNow() {
+    let Total = { price: this.price };
+    this.ReservationSErvice.saveReservation(this.uniqueOrder, Total);
   }
 }
