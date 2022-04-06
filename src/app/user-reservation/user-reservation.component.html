@@ -57,9 +57,9 @@
                               {{ ite?.get_meals[0]?.description }}
                             </p>
                           </td>
-                          <td>{{ ite?.get_meals[0]?.price|currency:'USD' }}</td>
+                          <td>{{ ite?.get_meals[0]?.price|currency:'EGP' }}</td>
                           <td>{{ ite?.num }}</td>
-                          <td>{{ ite?.num * ite?.get_meals[0]?.price|currency:'USD' }}</td>
+                          <td>{{ ite?.num * ite?.get_meals[0]?.price|currency:'EGP' }}</td>
                         </tr>
                         <tr class="d-flex justify-content-end">
                           <app-total-price

@@ -21,7 +21,7 @@
             <p class="pt-3">
               {{ SpecialMeal?.[0].description }}
             </p>
-            <h3 class="special-dishes-price">${{ SpecialMeal?.[0].price }}</h3>
+            <h3 class="special-dishes-price">{{ SpecialMeal?.[0].price |currency:'EGP'}}</h3>
 
             <a (click)="freg('reserve')" class="btn-primary mt-3"
               >book a table<span><i class="fa fa-long-arrow-right"></i></span
@@ -66,7 +66,7 @@
             <p class="pt-3">
               {{ SpecialMeal?.[1].description }}
             </p>
-            <h3 class="special-dishes-price">${{ SpecialMeal?.[1].price }}</h3>
+            <h3 class="special-dishes-price">{{ SpecialMeal?.[1].price |currency:'EGP'}}</h3>
             <a (click)="freg('reserve')" class="btn-primary mt-3"
               >book a table <span><i class="fa fa-long-arrow-right"></i></span
             ></a>

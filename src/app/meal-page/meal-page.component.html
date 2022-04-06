@@ -31,7 +31,7 @@
               style="font-size: 25px; margin-top: 15px"
               class="special-dishes-price"
             >
-              {{ SelectedMeal.price | currency: "USD" }}
+              {{ SelectedMeal.price |currency:'EGP' }}
               <span class="actions me-5" (click)="addFavourite(SelectedMeal)">
                 <i class="fa fa-heart "></i>
               </span>
