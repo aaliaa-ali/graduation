@@ -72,7 +72,7 @@
             <a class="nav-link" routerLink="/menu">Menu</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" (click)="freg('reserve')">ReserveNow</a>
+            <a class="nav-link" (click)="freg('reserve')">Reserve</a>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -111,7 +111,7 @@
                 <i class="fa-solid fa-user-pen"></i> Register</a
               >
               <a *ngIf="Auth" class="dropdown-item" routerLink="/myreservation"
-                ><i class="fa-solid fa-utensils"></i> MyReServation</a
+                ><i class="fa-solid fa-utensils"></i> Your ReServation</a
               >
               <a
                 *ngIf="Auth"

@@ -47,7 +47,8 @@
     </div>
   </div>
 </div>
-<div class="row justify-content-center">
+<div class="row justify-content-center parent">
+  <div *ngIf="!auth" class="alert">Login to keep your favourites saved</div>
   <div class="col-lg-3 col-md-4 m-3 col-sm-7 col-9" *ngFor="let order of FevArray">
     <div class="card card-block">
       <h4 class="card-title special text-right">

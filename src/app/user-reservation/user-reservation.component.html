@@ -43,7 +43,7 @@
                     <table class="table custom-table m-0">
                       <thead>
                         <tr>
-                          <th>Order Meals</th>
+                          <th><i class="fa-solid fa-utensils"></i>  Order Meals</th>
                           <th>Price</th>
                           <th>Quantity</th>
                           <th>Sub Total</th>
@@ -52,8 +52,8 @@
                       <tbody *ngFor="let item of data">
                         <tr *ngFor="let ite of item">
                           <td>
-                            {{ ite?.get_meals[0]?.name }}
-                            <p class="m-0 text-muted">
+                           <p class="meal-name"> {{ ite?.get_meals[0]?.name }}</p>
+                            <p class="m-0  meal-description">
                               {{ ite?.get_meals[0]?.description }}
                             </p>
                           </td>

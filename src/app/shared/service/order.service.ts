@@ -23,7 +23,6 @@ export class OrderService {
       this.orderarray.push(meal);
       this.uniqueOrder.push(meal);
     }
-    console.log(meal);
   }
   additemtochart(product: Meal): Meal[] {
     var index = this.cartArray.findIndex((x) => x.id == product.id);

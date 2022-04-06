@@ -1,12 +1,8 @@
 body{
     margin: 0;
     padding: 0;
-    font: 400 .875rem 'Open Sans', sans-serif;
-    /* color: #bcd0f7; */
-    /* background: gray;
-    position: relative; */
+    font: 400 .875rem ;
     height: 100%;
-    /* color: white; */
 }
 .invoice-container {
     padding: 1rem;
@@ -16,17 +12,14 @@ body{
     display: inline-block;
     font-size: 1.6rem;
     font-weight: 700;
-    /* color: #bcd0f7; */
-    /* color: white; */
+  
 }
 .invoice-container .invoice-header .invoice-logo img {
     max-width: 130px;
 }
 .invoice-container .invoice-header address {
     font-size: 0.8rem;
-    /* color: #8a99b5; */
     margin: 0;
-    /* color: white; */
 }
 .invoice-container .invoice-details {
     margin: 1rem 0 0 0;
@@ -74,14 +67,12 @@ body{
     margin: 0 0 1rem 0;
     display: inline-block;
     padding: 1rem;
-    /* background: gray; */
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     border-radius: 50px;
 }
 .invoice-status .badge {
     text-transform: uppercase;
-    /* color: white; */
 }
 
 @media (max-width: 767px) {
@@ -91,39 +82,22 @@ body{
 }
 
 .card {
-    /* background: gray; */
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     border: 0;
     margin-bottom: 1rem;
 }
-
-.custom-table {
-    border: 1px solid gray;
-}
-.custom-table thead {
-    /* background: gray; */
-}
 .custom-table thead th {
     border: 0;
-    /* color: #ffffff; */
 }
-/* .custom-table > tbody tr:hover {
-    background: gray;
-} */
-.custom-table > tbody tr:nth-of-type(even) {
-    /* background-color:gray; */
-}
+
 .custom-table > tbody td {
     border: 1px solid gray;
 }
 
 .table {
-    /* background: gray; */
-    /* color: #bcd0f7; */
     font-size: .75rem;
-    /* color: white; */
 }
 .text-success {
     color: #c0d64a !important;
@@ -147,3 +121,26 @@ width: 40%;    }
     img {
 width: 80%;    }
   }
+
+ .table-responsive{
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+ }
+
+ .meal-name{
+    margin-bottom: .3rem;
+    font-weight: bold;
+    font-size: 14px;
+ }
+ .meal-description{
+    font-size: 13px;
+    color: #636262;
+    font-weight: normal;
+ }
+ th{
+    font-size: 20px;
+ }
+ td{
+    font-weight: bold;
+    font-size: 14px;
+ }

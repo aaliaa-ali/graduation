@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Category } from '../shared/model/category';
 import { Meal } from '../shared/model/meal';
-import { CategoryService } from '../shared/service/category.service';
+import { FavouriteService } from '../shared/service/favourite.service';
 import { MealService } from '../shared/service/meal.service';
+import { OrderService } from '../shared/service/order.service';
 
 @Component({
   selector: 'app-meal-page',
@@ -13,19 +14,27 @@ export class MealPageComponent implements OnInit {
   SelectedMeal!:Meal
   Category!:Category
 
-  constructor(private MealService:MealService,private CategoryService:CategoryService) { }
+  constructor(private MealService:MealService,
+    private OrderService:OrderService ,
+    private FavouriteService:FavouriteService) { }
 
   ngOnInit(): void {
-    this.MealService.getById().subscribe(meal=>{
-      this.SelectedMeal=meal
-    })
-    this.CategoryService.getById().subscribe(category=>{
-      this.Category=category
-    })
     this.SelectedMeal=this.MealService.SelectedMeal
-    console.log(this.SelectedMeal)
-
+  }
+  addorder(mymeal:any){
+    this.OrderService.addorder(mymeal);
   }
   
-
+  addFavourite(mymeal:any)
+  {
+    if(localStorage.getItem('toke')){
+      let data={id:mymeal.id}
+      console.log(data)
+       this.FavouriteService.sendfev(data).subscribe(
+         (next)=>{console.log(next)},
+         (error)=>{console.log(error)}
+       );      
+    }else{
+      this.FavouriteService.addToLocalFev(mymeal);    }
+  }
 }

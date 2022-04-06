@@ -82,3 +82,16 @@ img{
   font-size: 150px;
   color: #E34949;
  }
+ .alert{
+  position: absolute;
+  right: 40px;
+  bottom: -65px;
+  background-color: #fbf1df;
+  padding: 5px;
+  border-radius: 8px;
+  font-size: .8rem;
+ }
+ .parent{
+   position: relative;
+   margin-bottom: 70px;
+ }

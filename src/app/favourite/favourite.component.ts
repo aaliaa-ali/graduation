@@ -12,6 +12,7 @@ import { OrderService } from '../shared/service/order.service';
 export class FavouriteComponent implements OnInit {
   MainFavArray!: Array<any>;
   FevArray!: Array<Meal>;
+  auth=false
 
   constructor(
     private MealService: MealService,
@@ -24,6 +25,7 @@ export class FavouriteComponent implements OnInit {
   }
   getfev() {
     if (localStorage.getItem('toke')) {
+      this.auth=true
       this.FavouriteService.getFev();
       this.FavouriteService.MainFavArray.subscribe((fev) => {
         this.MainFavArray = fev;

@@ -11,13 +11,15 @@ img {
   border-radius: 5%;
 }
 .MenuBtn {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border: 0;
-  padding: 10px;
-  border-radius: 4px;
-  cursor: pointer;
+  box-shadow: 1px 0px 8px 1px darkgrey;
+
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    border: 0;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 .MenuBtn:hover{
   color: #f34949;
@@ -25,3 +27,19 @@ img {
 section{
     position: relative;
 }
+.actions{
+  box-shadow: 1px 0px 8px 1px darkgrey;
+    border: 0;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.actions i{
+  color: black;
+  font-size: 20px;
+}
+.actions:hover i{
+  color: #f34949;
+}
+

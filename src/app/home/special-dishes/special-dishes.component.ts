@@ -24,5 +24,8 @@ export class SpecialDishesComponent implements OnInit {
   {
     this.router.navigateByUrl('#'+reserve);
   }
+  ShowMeal(meal:Meal){
+    this.MealService.display(meal)
+  }
 
 }

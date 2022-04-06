@@ -51,7 +51,7 @@ export class ReservationComponent implements OnInit {
             table_id: ResData.table_id,
           };
           this.message =
-            'Yor table is reserved succsfully Go to Menu to Complete Reservation';
+            'Your table is reserved succsfully Go to Menu to Complete Reservation';
           this.ReservationService.ColectData(reservationData);
           this.book.reset();
           this.reserved = true;

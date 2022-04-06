@@ -1,10 +1,12 @@
 <section id="gtco-special-dishes" class="bg-grey section-padding py-5">
   <div class="container">
     <div class="section-content">
-      <button routerLink="/menu" class="MenuBtn"><i class="fa-solid fa-arrow-left"></i>Back TO Menu</button>
+      <button routerLink="/menu" class="MenuBtn">
+        <i class="fa-solid fa-arrow-left"></i>Back TO Menu
+      </button>
       <div class="heading-section text-center">
         <span class="subheading"> Specialties </span>
-        <h2>{{ SelectedMeal.category?.name }}</h2>
+        <h2>{{ SelectedMeal?.category?.name }}</h2>
       </div>
       <div class="row mt-5 justify-content-center" id="meal1">
         <div class="col-lg-5 col-md-10 align-self-center py-3">
@@ -13,7 +15,7 @@
             <p>
               {{ SelectedMeal.description }}
             </p>
-            <div *ngIf="SelectedMeal.option.length>0">
+            <div *ngIf="SelectedMeal.option?.length > 0">
               <p class="m-0" style="font-size: 20px; font-weight: 700">
                 <i class="fa-solid fa-utensils"></i> Side Dishes
               </p>
@@ -26,19 +28,28 @@
             </div>
 
             <h3
-              style="font-size: 25px; margin-top: 10px"
+              style="font-size: 25px; margin-top: 15px"
               class="special-dishes-price"
             >
-              {{ SelectedMeal.price |currency:'USD'}}
+              {{ SelectedMeal.price | currency: "USD" }}
+              <span class="actions me-5" (click)="addFavourite(SelectedMeal)">
+                <i class="fa fa-heart "></i>
+              </span>
+              <span class="actions" (click)="addorder(SelectedMeal)">  
+                <i
+                class="fa-solid fa-cart-shopping shoping"
+              > </i>
+            </span>
             </h3>
           </div>
         </div>
-        <div class=" imgContainer text-center col-lg-6">
+        <div class="imgContainer text-center col-lg-6">
           <img
-            src="{{ SelectedMeal.medially[0].file_url }}"
+            src="{{ SelectedMeal.medially[0]?.file_url }}"
             alt=""
-            class="img-fluid img-cover"  
-            width="500px"        />
+            class="img-fluid img-cover"
+            width="500px"
+          />
         </div>
       </div>
     </div>

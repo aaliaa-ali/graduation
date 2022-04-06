@@ -37,7 +37,9 @@ a {
   background: #bb1d1d;
   -webkit-animation: pulse 1.5s infinite;
 }
-
+.card-action:hover i{
+  color: white;
+}
 .card-heading {
   font-size: 18px;
   font-weight: bold;
@@ -66,7 +68,7 @@ a {
 .card-button:hover {
   text-decoration: none;
   background-color: #bb1d1d;
-  color: #fff;
+  color: #fff !important;
 
 }
 .hidden{
