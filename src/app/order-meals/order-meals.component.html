@@ -30,7 +30,7 @@
             <div class="card-body">
               <div class="d-flex justify-content-between">
                 <h4 class="card-title">{{ order.name }}</h4>
-                <h4 class="card-title">{{ order.price | currency: "USD" }}</h4>
+                <h4 class="card-title">{{ order.price | currency: "EGP" }}</h4>
               </div>
               <p class="card-text">
                 {{ order.description }}
@@ -67,7 +67,7 @@
       <div class="row justify-content-center">
         <div class="col-5 d-flex justify-content-center">
           <h3 class="card-title mx-4">Total</h3>
-          <h3 class="card-text">{{ CalcPrice() | currency: "USD" }}</h3>
+          <h3 class="card-text">{{ CalcPrice() | currency: "EGP" }}</h3>
         </div>
       </div>
       <div class="row justify-content-end">

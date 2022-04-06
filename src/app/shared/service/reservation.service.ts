@@ -57,6 +57,7 @@ export class ReservationService {
     handler.open({
       amount: amount,
       name: 'Resto Restautant',
+      currency: 'egp',
     });
   }
 
